@@ -1,0 +1,78 @@
+#include <iostream>
+#include <cstdlib>
+#include <stdio.h>
+#include<iomanip>
+using namespace std;
+void swap(int *xp, int *yp) {
+    int temp = *xp;
+    *xp = *yp;
+    *yp = temp;
+}
+
+void bubbleSort(int arr[], int n) {
+    for (int i = 0; i < n-1; i++)
+        for (int j = 0; j < n-i-1; j++)
+            if (arr[j] > arr[j+1])
+                swap(&arr[j], &arr[j+1]);
+}
+
+int main() {
+	cout << "\n" << "\t" << "\t" << "Ãåíåðóâàííÿ âèïàäêîâèõ ÷èñåë" << " \n" << "\n" << "\n";
+	
+    int m = -1;
+    while (m < 0) {
+    	cout << "Ââåä³òü ê³ëüê³ñòü ÷èñåë ïîñë³äîâíîñò³: ";
+    	cin >> m;
+	}
+    cout << "m = " << m <<endl;
+
+    int n = -1;
+    while (n < 0) {
+       
+        cout << "Ââåä³òü ê³ëüê³ñòü ä³éñíèõ ÷èñëåë ïîñë³äîâíîñò³: ";
+        cin >> n;
+    }
+    cout << "n = " << n <<endl;
+
+    int k = -1 ;
+    while (k < 3 || k > 10) {
+        cout << "Ââåä³òü ê³ëüê³ñòü ÷èñåë ïîñë³äîâíîñò³ â ðÿäêó (3 <= k <= 10): ";
+        cin >> k;
+    }
+    cout << "k = " << k <<endl;
+    
+	int numbers[m];
+    cout <<endl << "Ö³ë³ âèïàäêîâ³ ÷èñëà íà ïðîì³æêó  [-25,30]:" << endl;
+    for (int i = 1; i <= m; i++) {
+        numbers[i - 1] = rand() % 30 -25;
+        cout << numbers[i - 1] << " ";
+        if ((i % k) == 0)
+            cout <<endl;
+    }
+    
+	cout << endl << "Ä³éñí³ âèïàäêîâ³ ÷èñëà íà ïðîì³æêó [1,5]:" << endl;
+    for (int i=1; i<=n; i++) {  
+		
+		float number = (float)rand() / RAND_MAX * 4.0 - 2.0;
+		printf("%7.1f", number);
+		if ((i % k) == 0)
+		cout<<fixed<<showpoint;
+    cout<<setprecision(2);
+        cout << endl;  
+	}
+    
+    bubbleSort(numbers, m);
+    cout << endl << "Ïàðí³ âàð³àíòè (even):" << endl;
+	for ( int i = 0; i < m; i++ ) {
+        if ( numbers[i] % 2 == 0 ) {
+    	cout << numbers[i] << " ";
+    }   
+}
+cout << endl;
+bubbleSort(numbers, m);
+    cout << endl << "Íå ïàðí³ âàð³àíòè (odd):" << endl;
+	for ( int i = m; i > 0; i-- ) {
+        if ( numbers[i] % 2 == 1 ) 
+    	cout << numbers[i] << " ";
+    }
+}
